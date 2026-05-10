@@ -1,0 +1,83 @@
+/* ============================================
+   SKELETON LOADER - CSS MODULE
+   ============================================ */
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.skeletonCard {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.skeletonHeader {
+  height: 100px;
+  background: linear-gradient(90deg, var(--color-gray-300) 25%, var(--color-gray-200) 50%, var(--color-gray-300) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--border-radius-md);
+  animation: shimmer 1.5s infinite;
+}
+
+.skeletonLine {
+  height: 12px;
+  background: linear-gradient(90deg, var(--color-gray-300) 25%, var(--color-gray-200) 50%, var(--color-gray-300) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--border-radius-sm);
+  animation: shimmer 1.5s infinite;
+}
+
+/* TABLE SKELETON */
+.skeletonTable {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.skeletonRow {
+  display: flex;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.skeletonCell {
+  flex: 1;
+  height: 40px;
+  background: linear-gradient(90deg, var(--color-gray-300) 25%, var(--color-gray-200) 50%, var(--color-gray-300) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--border-radius-sm);
+  animation: shimmer 1.5s infinite;
+}
+
+/* ANIMACIÓN SHIMMER - MÁS RÁPIDA */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .skeletonGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .skeletonRow {
+    flex-direction: column;
+  }
+}

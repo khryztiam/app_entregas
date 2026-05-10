@@ -1,0 +1,100 @@
+.title {
+  color: var(--color-text);
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 24px;
+}
+
+.tabs {
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tabButton {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px 16px;
+}
+
+.tabButton:hover {
+  color: var(--color-text);
+}
+
+.tabActive {
+  border-bottom-color: var(--color-primary);
+  color: var(--color-primary-light);
+}
+
+.panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+}
+
+.panelHeader {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.panelTitle {
+  color: var(--color-text);
+  font-size: 1.125rem;
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.panelHeader .panelTitle {
+  margin-bottom: 0;
+}
+
+.description {
+  color: var(--color-text-secondary);
+  margin: 0 0 16px;
+}
+
+.dropZone {
+  border: 2px dashed var(--color-border);
+  border-radius: 8px;
+  padding: 32px;
+  text-align: center;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.fileLabel {
+  cursor: pointer;
+}
+
+.summaryAlert {
+  margin-top: 16px;
+}
+
+.searchBox {
+  margin-bottom: 16px;
+}
+
+.loadingMessage {
+  color: var(--color-text-secondary);
+  padding: 32px;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .panelHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

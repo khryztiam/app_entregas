@@ -1,0 +1,117 @@
+/* ============================================
+   ALERT COMPONENT - CSS MODULE
+   ============================================ */
+
+.alertContainer {
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  border-left: 4px solid transparent;
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  animation: slideIn var(--transition-base);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* SUCCESS */
+.alertContainer.success {
+  background-color: rgba(76, 175, 80, 0.15);
+  border-left-color: var(--color-success);
+  color: #81c784;
+}
+
+/* ERROR */
+.alertContainer.error {
+  background-color: rgba(244, 67, 54, 0.15);
+  border-left-color: var(--color-error);
+  color: #ef5350;
+}
+
+/* WARNING */
+.alertContainer.warning {
+  background-color: rgba(255, 152, 0, 0.15);
+  border-left-color: var(--color-warning);
+  color: #ffb74d;
+}
+
+/* INFO */
+.alertContainer.info {
+  background-color: rgba(33, 150, 243, 0.15);
+  border-left-color: var(--color-info);
+  color: #64b5f6;
+}
+
+/* ICONO */
+.icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CONTENIDO */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  text-align: left;
+}
+
+.title {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-tight);
+}
+
+.message {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  opacity: 0.9;
+}
+
+/* CLOSEBUTTON */
+.closeButton {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-sm);
+  opacity: 0.7;
+}
+
+.closeButton:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .alertContainer {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .title {
+    font-size: var(--font-size-xs);
+  }
+
+  .message {
+    font-size: 11px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}

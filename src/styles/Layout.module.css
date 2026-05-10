@@ -1,0 +1,170 @@
+/* =====================================================================
+   Layout.module.css
+   Wrapper principal: sidebar fijo izquierda + area de contenido derecha.
+   ===================================================================== */
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--light);
+}
+
+.pageHeader {
+background: 
+    radial-gradient(circle at 84% 18%, rgba(14, 165, 233, 0.12), transparent 30%),
+    linear-gradient(135deg, var(--dark) 0%, #1e293b 60%, var(--primary) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 28px;
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.hamburger {
+  display: none;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  cursor: pointer;
+  color: #ffffff;
+  padding: 9px;
+  border-radius: 8px;
+  line-height: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+.headerIcon {
+width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+.headerIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.pageTitle {
+margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.pageSubtitle {
+margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
+.content {
+  flex: 1;
+  padding: 32px 28p
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .pageHeader {
+    padding: 0 16px;
+    min-height: 80px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .pageTitle {
+    font-size: 1.4rem;
+  }
+
+  .pageSubtitle {
+    font-size: 0.78rem;
+  }
+
+  .headerIcon {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 478px) {
+  .pageHeader {
+    padding: 0 12px;
+    min-height: 88px;
+  }
+
+  .headerLeft {
+    gap: 8px;
+  }
+
+  .content {
+    padding: 12px;
+  }
+
+  .titleBlock {
+    gap: 3px;
+  }
+
+  .pageTitle {
+    font-size: 1.08rem;
+  }
+
+  .pageSubtitle {
+    font-size: 0.68rem;
+  }
+
+  .headerIcon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .headerIcon svg {
+    width: 18px;
+    height: 18px;
+  }
+}

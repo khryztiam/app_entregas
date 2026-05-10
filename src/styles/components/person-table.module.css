@@ -1,0 +1,206 @@
+.tableWrapper {
+  overflow-x: auto;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  background: white;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table thead {
+  background: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #495057;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #e9ecef;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.table td {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+
+.documento {
+  font-weight: 600;
+  color: #212529;
+  min-width: 120px;
+}
+
+.nombre {
+  color: #212529;
+  min-width: 150px;
+}
+
+.email {
+  color: #6c757d;
+  min-width: 180px;
+  word-break: break-word;
+}
+
+.telefono {
+  color: #6c757d;
+  min-width: 140px;
+}
+
+.estado {
+  min-width: 100px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.active {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge.inactive {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.btnIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #dee2e6;
+  background: white;
+  border-radius: 6px;
+  color: #495057;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.btnIcon:hover {
+  border-color: #007bff;
+  color: #007bff;
+  background: #f0f7ff;
+}
+
+.btnIcon.btnToggle:hover {
+  border-color: #ffc107;
+  color: #ffc107;
+  background: #fffbf0;
+}
+
+.btnIcon.btnDelete:hover {
+  border-color: #dc3545;
+  color: #dc3545;
+  background: #fff5f5;
+}
+
+.row.inactive {
+  opacity: 0.7;
+  background: #f5f5f5;
+}
+
+.row.inactive:hover {
+  background: #e9ecef;
+}
+
+.loading {
+  padding: 40px;
+  text-align: center;
+  color: #6c757d;
+  font-size: 14px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.empty {
+  padding: 60px 20px;
+  text-align: center;
+  color: #6c757d;
+  font-size: 16px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+@media (max-width: 1024px) {
+  .table {
+    font-size: 13px;
+  }
+
+  .table th,
+  .table td {
+    padding: 10px 12px;
+  }
+
+  .documento,
+  .nombre,
+  .email,
+  .telefono {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .tableWrapper {
+    border-radius: 4px;
+  }
+
+  .table th {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .table td {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .email {
+    display: none;
+  }
+
+  .actions {
+    gap: 4px;
+  }
+
+  .btnIcon {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}

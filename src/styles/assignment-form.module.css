@@ -1,0 +1,61 @@
+.managementContainer {
+  padding: 20px;
+}
+
+.panelHeader {
+  align-items: flex-start;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.managementTitle {
+  color: var(--color-text);
+  font-size: 2rem;
+  margin: 0;
+}
+
+.managementDescription {
+  color: var(--color-text-secondary);
+  margin: 8px 0 0;
+}
+
+.assignmentsList {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+}
+
+.searchBox {
+  margin-bottom: 18px;
+  max-width: 420px;
+}
+
+.loadingMessage {
+  color: var(--color-text-secondary);
+  padding: 32px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .managementContainer {
+    padding: 10px;
+  }
+
+  .panelHeader {
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: stretch;
+  }
+
+  .panelHeader button {
+    width: 100%;
+  }
+
+  .managementTitle {
+    font-size: 1.5rem;
+  }
+}

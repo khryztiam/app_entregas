@@ -1,0 +1,145 @@
+/* Root Layout Styles - Usando Design Tokens */
+
+/* ===== CONTAINER ===== */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+}
+
+/* ===== MOBILE HEADER ===== */
+.mobileHeader {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  gap: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  z-index: 40;
+  position: sticky;
+  top: 0;
+}
+
+.hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-xs);
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.hamburger:hover {
+  background-color: var(--color-gray-100);
+}
+
+.hamburgerIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.mobileTitle {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  flex: 1;
+  text-align: center;
+}
+
+/* ===== LAYOUT WRAPPER ===== */
+.layoutWrapper {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  margin-left: 16rem;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mainContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg);
+}
+
+/* ===== AUTH LAYOUT (Login, etc) ===== */
+.authWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  min-height: 100vh;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .mobileHeader {
+    display: flex;
+  }
+
+  .layoutWrapper {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .mobileHeader {
+    padding: 0.75rem;
+  }
+
+  .hamburger {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .hamburgerIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .mobileTitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .mainContent {
+    padding: var(--spacing-md);
+  }
+}
+
+/* ===== SCROLLBAR ===== */
+.mainContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.mainContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mainContent::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.mainContent::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}

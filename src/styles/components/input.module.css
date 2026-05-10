@@ -1,0 +1,147 @@
+/* ============================================
+   INPUT COMPONENT - CSS MODULE
+   ============================================ */
+
+.inputWrapper {
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+}
+
+.required {
+  color: var(--color-error);
+  margin-left: var(--spacing-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  font-family: inherit;
+  line-height: var(--line-height-normal);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: var(--transition-sm);
+}
+
+.input::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+/* Estado hover */
+.input:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+/* Estado focus */
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+/* Estado deshabilitado */
+.input:disabled {
+  background-color: var(--color-gray-100);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Estado error */
+.input.error {
+  border-color: var(--color-error);
+  background-color: rgba(244, 67, 54, 0.02);
+}
+
+.input.error:focus {
+  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
+}
+
+/* Estado validado (success) */
+.input.success {
+  border-color: var(--color-success);
+}
+
+.input.success:focus {
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+/* Mensaje de error */
+.errorMessage {
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  animation: slideIn var(--transition-sm);
+  margin-top: var(--spacing-sm);
+}
+
+/* Mensaje de éxito */
+.successMessage {
+  font-size: var(--font-size-xs);
+  color: var(--color-success);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  animation: slideIn var(--transition-sm);
+  margin-top: var(--spacing-sm);
+}
+
+/* Icono de estado */
+.icon {
+  position: absolute;
+  right: var(--spacing-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Input con icono - agregar padding-right extra */
+.inputWrapper.withIcon .input {
+  padding-right: calc(var(--spacing-lg) + 20px + var(--spacing-lg));
+}
+
+/* Respuesta rápida (visual feedback) */
+.input:invalid:not(:placeholder-shown) {
+  border-color: var(--color-warning);
+}
+
+/* Mobile responsivo */
+@media (max-width: 768px) {
+  .input {
+    font-size: 16px; /* Prevenir zoom en iOS */
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .label {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Accesibilidad - Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .input,
+  .errorMessage,
+  .successMessage {
+    animation: none;
+    transition: none;
+  }
+}

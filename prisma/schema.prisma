@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ========== AUTH & ROLES ==========
+
+model User {
+  id        String   @id @default(cuid())
+  username     String   @unique // no cambiar bajo ninguna circunstancia
+  passwordHash String
+  role      String   @default("user") // "admin" | "user"
+  estado    Boolean  @default(true)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+// ========== ENTITIES ==========
+
+model Person {
+  id            String   @id @default(cuid())
+  documento     String   @unique
+  nombre        String
+  email         String?  @unique
+  direccion     String?
+  telefono      String?
+  estado        Boolean  @default(true)
+  
+  // Relaciones: PRÉSTAMOS (como quien recibe)
+  loansAs       Loan[]   @relation("loanRecipient")
+  
+  // Relaciones: PRÉSTAMOS (como quien entrega)
+  loansDelivered Loan[]  @relation("loanDeliverer")
+  
+  // Relaciones: ENTREGAS (como quien recibe)
+  deliveriesAs  Delivery[] @relation("deliveryRecipient")
+  
+  // Relaciones: ENTREGAS (como quien realiza - admin o user)
+  deliveriesBy  Delivery[] @relation("deliveryDeliverer")
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("persons")
+}
+
+model Inventory {
+  id            String   @id @default(cuid())
+  eanCode       String?  @unique @map("ean_code")
+  serieCode     String?  @unique @map("serie_code")
+  description   String
+  type          String   // Laptop, Tablet, etc.
+  stock         Int      @default(0)
+  // stock = 0: no elegible para préstamo
+  // stock = -1: 1 item en préstamo
+  // stock = N: N items disponibles
+  
+  // Relaciones
+  loans         Loan[]
+  deliveries    Delivery[]
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("inventory")
+}
+
+// ========== MOVEMENTS ==========
+
+model Loan {
+  id            String   @id @default(cuid())
+  
+  // Persona que recibe el préstamo
+  person        Person   @relation("loanRecipient", fields: [personId], references: [id])
+  personId      String   @map("person_id")
+  
+  // Item del inventario
+  inventory     Inventory @relation(fields: [inventoryId], references: [id])
+  inventoryId   String   @map("inventory_id")
+  
+  // Fechas del préstamo
+  dateStart     DateTime @map("date_start")
+  dateEnd       DateTime? @map("date_end")
+  daysAssigned  Int      @map("days_assigned")
+  
+  // Recepción
+  receivedAt    DateTime? @map("received_at")
+  receivedBy    Person?  @relation("loanDeliverer", fields: [receivedById], references: [id])
+  receivedById  String?  @map("received_by_id")
+  
+  // Estado
+  status        String   @default("active") // "active" | "overdue" | "completed"
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("loans")
+}
+
+model Delivery {
+  id            String   @id @default(cuid())
+  
+  // Persona que recibe la entrega
+  person        Person   @relation("deliveryRecipient", fields: [personId], references: [id])
+  personId      String   @map("person_id")
+  
+  // Item del inventario
+  inventory     Inventory @relation(fields: [inventoryId], references: [id])
+  inventoryId   String   @map("inventory_id")
+  
+  // Cantidad entregada
+  quantity      Int
+  
+  // Fecha de entrega
+  dateDelivery  DateTime @map("date_delivery")
+  
+  // Quien realiza la entrega (admin o user)
+  deliveredBy   Person   @relation("deliveryDeliverer", fields: [deliveredById], references: [id])
+  deliveredById String   @map("delivered_by_id")
+  
+  // Notas opcionales
+  notes         String?
+  
+  createdAt     DateTime @default(now())
+
+  @@map("deliveries")
+}
